@@ -1,0 +1,26 @@
+CACHE MANIFEST
+
+# VERSION 1.0.8
+
+CACHE:
+engine/honey-1.1.3.min.js
+engine/config.js
+js/animframe_polyfill.js
+js/application.js
+js/game_manager.js
+js/grid.js
+js/html_actuator.js
+js/keyboard_input_manager.js
+js/local_score_manager.js
+js/tile.js
+
+css/main.css
+
+icon.png
+splash.png
+
+
+NETWORK:
+*
+
+FALLBACK:

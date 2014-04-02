@@ -1,15 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html manifest="index.manifest">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>2048</title>
+	<meta name="viewport" content="width=device-width,height=device-height; initial-scale=1.0; maximum-scale=1.0; user-scalable=no; target-densitydpi=device-dpi;" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<link rel="apple-touch-icon" href="icon.png" />
+	<link rel="apple-touch-startup-image" href="splash.png" />
+	<meta name="tencent-x5-page-decoration" content= "portrait"/>
+	<meta name="oupengmobile" content="game,fullscreen,lockrotation,portrait" />
+	<meta name="x5-orientation" content="portrait"/>
+	<meta name="screen-orientation" content="portrait" />
+	<title>2048朝代版</title>
 	<link href="./css/main.css" rel="stylesheet" type="text/css">
-	<script src="engine/config.js"></script>
-	<script src="engine/honey-1.1.3.min.js"></script>
-	<script src="engine/cordova.js"></script>
-	<script src="engine/phonegap-setting.js"></script>
+	<script src="./engine/config.js"></script>
+	<script src="./engine/honey-1.1.3.min.js"></script>
+	<script>
+		// 设置离线缓存
+		Honey.Cache({
+			onnoupdate:function() {
+				document.querySelector("#cacheDiv").style.display = "none";
+			},
+			onprogress:function(event) {
+				document.querySelector("#cacheCount").innerHTML = ("("+event.loaded+"/"+event.total+")");
+			},
+			onerror:function(event) {
+				document.querySelector("#cacheDiv").style.display = "none";
+			}
+		});
+	</script>
 </head>
 <body>
+<div id="cacheDiv" style="position:absolute; width:100%; height:100%; left:0px; top:0px; background-color:#000; z-index:1000;">
+	<div style="position:absolute; color:white; width:100%; text-align:center; top:40%;">
+		图片加载中<span id="cacheCount"></span>…
+	</div>
+</div>
 <div class="heading">
 	<div class="scores-container">
 		<div class="score-container">0</div>
@@ -78,13 +104,13 @@
       line-height: 30px;
       margin-top: 15px;" />
 </div>
-	<script src="js/animframe_polyfill.js"></script>
-	<script src="js/keyboard_input_manager.js"></script>
-	<script src="js/html_actuator.js"></script>
-	<script src="js/grid.js"></script>
-	<script src="js/tile.js"></script>
-	<script src="js/local_score_manager.js"></script>
-	<script src="js/game_manager.js"></script>
-	<script src="js/application.js"></script>
+<script src="js/animframe_polyfill.js"></script>
+<script src="js/keyboard_input_manager.js"></script>
+<script src="js/html_actuator.js"></script>
+<script src="js/grid.js"></script>
+<script src="js/tile.js"></script>
+<script src="js/local_score_manager.js"></script>
+<script src="js/game_manager.js"></script>
+<script src="js/application.js"></script>
 </body>
 </html>
